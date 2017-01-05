@@ -49,8 +49,7 @@
 			}
 		%>
 		<%=result%>
-		<br>
-		<br>
+		<br> <br>
 	<h3 align="center">Your localPort is :</h3>
 	<%=localPort%>
 	<br>
@@ -70,5 +69,41 @@
 	<h4><%=input%></h4>
 	<br>
 	<br>
+	<h3 align="center">Your all parameters :</h3>
+	<%
+		Iterator it = list.iterator();
+		while (it.hasNext()) {
+			out.print("<br>" + it.next());
+		}
+	%>
+	<br> Your context path is :
+	<b><i><%=contextPath%></b>
+	</i>
+	<br>
+	<br> Your all cookies are :
+	<%
+		int counter = 0;
+		for (Cookie cookie : cookies) {
+			counter++;
+			out.print("Number[" + counter + "] = " + cookie + "<br>");
+		}
+	%>
+	<p>
+		<%
+			//HttpServltetRequest getMethod() Returns the name of the HTTP method with which this
+			//request was made, for example, GET, POST, or PUT. Same as the value of the CGI
+			// variable REQUEST_METHOD.
+			out.println("You are using Method HTTP: " + request.getMethod());
+		%>
+	
+	<p>
+		<%
+			// HttpServletRequest getQueryString() Returns the query string that is contained in the request 
+			// URL after the path. This method returns null if the URL does not have a query string. Same as 
+			// the value of the CGI variable QUERY_STRING
+			out.println("Your Query String are : " + request.getQueryString());
+			out.println("Your Session are : " + http_session);
+		%>
+	
 </body>
 </html>
